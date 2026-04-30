@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getProductById } from "../../asyncMock";
 import { useCart } from "../../context/CartContext";
-import { ShoppingBag, ArrowLeft, Minus, Plus, MessageCircle } from "lucide-react";
+import { useWishlist } from "../../context/WishlistContext";
+import { useToast } from "../../context/ToastContext";
+import RelatedProducts from "./RelatedProducts";
+import { ShoppingBag, ArrowLeft, Minus, Plus, MessageCircle, Heart } from "lucide-react";
 
 const ItemDetail = () => {
   const { itemId } = useParams();
@@ -12,20 +15,34 @@ const ItemDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const { addItem } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
+  const { addToast } = useToast();
 
   useEffect(() => {
     setLoading(true);
     setError(false);
+    setQuantity(1);
     getProductById(itemId)
-      .then(setProduct)
+      .then((p) => { setProduct(p); document.title = `${p.nombre} — GOWS Perfumerie`; })
       .catch(() => setError(true))
       .finally(() => setLoading(false));
+    return () => { document.title = "GOWS Perfumerie | Fragancias de Alta Gama"; };
   }, [itemId]);
 
   const handleAdd = () => {
     addItem(product, quantity);
     setAdded(true);
+    addToast(`${product.nombre} agregado al carrito 🛍️`, "success");
     setTimeout(() => setAdded(false), 2500);
+  };
+
+  const handleWishlist = () => {
+    const inList = isInWishlist(product.id);
+    toggleWishlist(product);
+    addToast(
+      inList ? `${product.nombre} eliminado de favoritos` : `${product.nombre} guardado en favoritos ❤️`,
+      inList ? "info" : "success"
+    );
   };
 
   // Skeleton
@@ -34,7 +51,7 @@ const ItemDetail = () => {
       <div className="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-16">
         <div className="skeleton aspect-[3/4] w-full rounded" />
         <div className="space-y-4 pt-8">
-          <div className="skeleton h-4 w-24 rounded" />
+          <div className="skeleton h-3 w-24 rounded" />
           <div className="skeleton h-10 w-3/4 rounded" />
           <div className="skeleton h-6 w-1/4 rounded" />
           <div className="skeleton h-32 w-full rounded" />
@@ -59,12 +76,8 @@ const ItemDetail = () => {
     );
   }
 
-  const categoryLabels = {
-    niche: "Fragancia Niche",
-    homme: "Para Él",
-    femme: "Para Ella",
-    unisex: "Unisex",
-  };
+  const categoryLabels = { niche: "Fragancia Niche", homme: "Para Él", femme: "Para Ella", unisex: "Unisex" };
+  const inWishlist = isInWishlist(product.id);
 
   return (
     <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 animate-fade-in">
@@ -80,56 +93,42 @@ const ItemDetail = () => {
         {/* Image */}
         <div className="relative">
           <div className="aspect-[3/4] overflow-hidden bg-gray-50">
-            <img
-              src={product.img}
-              alt={product.nombre}
-              className="w-full h-full object-cover"
-            />
+            <img src={product.img} alt={product.nombre} className="w-full h-full object-cover" />
           </div>
           {product.stock <= 6 && (
             <span className="absolute top-4 left-4 bg-black text-white text-[9px] tracking-widest uppercase px-3 py-1">
               Últimas {product.stock} unidades
             </span>
           )}
+          {/* Wishlist floating */}
+          <button
+            onClick={handleWishlist}
+            aria-label={inWishlist ? "Quitar de favoritos" : "Guardar en favoritos"}
+            className={`absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all duration-300 ${
+              inWishlist ? "bg-red-500 text-white" : "bg-white text-gray-400 hover:text-red-400"
+            }`}
+          >
+            <Heart size={16} fill={inWishlist ? "currentColor" : "none"} />
+          </button>
         </div>
 
         {/* Info */}
         <div className="flex flex-col justify-center">
-          {/* Category */}
           <p className="text-[10px] tracking-[0.4em] text-[#C4A265] uppercase mb-2">
             {categoryLabels[product.categoria]}
           </p>
-
-          {/* Brand */}
-          <p className="text-xs tracking-[0.25em] text-gray-400 uppercase mb-3">
-            {product.marca}
-          </p>
-
-          {/* Name */}
+          <p className="text-xs tracking-[0.25em] text-gray-400 uppercase mb-3">{product.marca}</p>
           <h1
             className="text-4xl lg:text-5xl font-light text-gray-900 leading-tight mb-1"
             style={{ fontFamily: "var(--font-serif)" }}
           >
             {product.nombre}
           </h1>
-
-          {/* Divider */}
           <div className="w-10 h-px bg-[#C4A265] my-6" />
+          <p className="text-2xl font-light text-gray-900 mb-1">USD ${product.precio}</p>
+          <p className="text-xs text-gray-400 tracking-wider mb-6">{product.intensidad}</p>
+          <p className="text-gray-600 text-sm leading-relaxed mb-6">{product.descripcion}</p>
 
-          {/* Price */}
-          <p className="text-2xl font-light text-gray-900 mb-1">
-            USD ${product.precio}
-          </p>
-          <p className="text-xs text-gray-400 tracking-wider mb-6">
-            {product.intensidad}
-          </p>
-
-          {/* Description */}
-          <p className="text-gray-600 text-sm leading-relaxed mb-6">
-            {product.descripcion}
-          </p>
-
-          {/* Notes */}
           {product.notas && (
             <div className="border-t border-gray-100 pt-5 mb-8">
               <p className="text-[10px] tracking-[0.3em] text-gray-400 uppercase mb-2">Pirámide Olfativa</p>
@@ -139,23 +138,17 @@ const ItemDetail = () => {
             </div>
           )}
 
-          {/* Quantity selector */}
+          {/* Quantity */}
           <div className="flex items-center gap-4 mb-6">
             <span className="text-[10px] tracking-[0.3em] text-gray-400 uppercase">Cantidad</span>
             <div className="flex items-center border border-gray-200">
-              <button
-                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="p-2 hover:bg-gray-50 transition-colors"
-              >
+              <button onClick={() => setQuantity((q) => Math.max(1, q - 1))} className="p-2 hover:bg-gray-50">
                 <Minus size={14} />
               </button>
               <span className="px-5 py-2 text-sm font-medium border-x border-gray-200 min-w-[3rem] text-center">
                 {quantity}
               </span>
-              <button
-                onClick={() => setQuantity((q) => Math.min(product.stock, q + 1))}
-                className="p-2 hover:bg-gray-50 transition-colors"
-              >
+              <button onClick={() => setQuantity((q) => Math.min(product.stock, q + 1))} className="p-2 hover:bg-gray-50">
                 <Plus size={14} />
               </button>
             </div>
@@ -167,15 +160,11 @@ const ItemDetail = () => {
             <button
               onClick={handleAdd}
               className="flex-1 flex items-center justify-center gap-2 py-4 text-xs tracking-[0.2em] uppercase font-semibold transition-all duration-300"
-              style={{
-                background: added ? "#C4A265" : "#0A0A0A",
-                color: "#fff",
-              }}
+              style={{ background: added ? "#C4A265" : "#0A0A0A", color: "#fff" }}
             >
               <ShoppingBag size={16} />
               {added ? "¡Agregado al carrito!" : "Agregar al Carrito"}
             </button>
-
             <a
               href={`https://wa.me/5491128831895?text=${encodeURIComponent(`Hola! Me interesa el perfume ${product.nombre} de ${product.marca}. ¿Tiene disponibilidad?`)}`}
               target="_blank"
@@ -204,6 +193,9 @@ const ItemDetail = () => {
           </div>
         </div>
       </div>
+
+      {/* Related products */}
+      <RelatedProducts currentId={product.id} categoria={product.categoria} />
     </main>
   );
 };

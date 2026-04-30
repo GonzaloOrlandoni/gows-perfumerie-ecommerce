@@ -1,11 +1,15 @@
-import { ShoppingCart, Search, Menu, X } from "lucide-react";
+import { ShoppingCart, Search, Menu, X, Heart } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
+import SearchModal from "../Search/SearchModal";
 
 const Navbar = () => {
   const { getTotalItems, setIsCartOpen } = useCart();
+  const { wishlist } = useWishlist();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const totalItems = getTotalItems();
 
   const navLinkClass = ({ isActive }) =>
@@ -51,11 +55,33 @@ const Navbar = () => {
 
             {/* Icons */}
             <div className="flex items-center space-x-5">
-              <Search className="w-[18px] h-[18px] text-gray-500 cursor-pointer hover:text-gray-900 transition-colors" />
+              {/* Search */}
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                aria-label="Buscar"
+                className="text-gray-500 hover:text-gray-900 transition-colors"
+              >
+                <Search className="w-[18px] h-[18px]" />
+              </button>
 
+              {/* Wishlist */}
+              <Link
+                to="/wishlist"
+                aria-label="Favoritos"
+                className="relative text-gray-500 hover:text-gray-900 transition-colors"
+              >
+                <Heart className="w-[18px] h-[18px]" />
+                {wishlist.length > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[9px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
+                    {wishlist.length}
+                  </span>
+                )}
+              </Link>
+
+              {/* Cart */}
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="relative cursor-pointer group"
+                className="relative group"
                 aria-label="Ver carrito"
               >
                 <ShoppingCart className="w-[18px] h-[18px] text-gray-500 group-hover:text-gray-900 transition-colors" />
@@ -70,22 +96,19 @@ const Navbar = () => {
         </div>
       </nav>
 
+      {/* Search Modal */}
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+
       {/* Mobile Menu */}
       {isMobileOpen && (
         <>
-          <div
-            className="fixed inset-0 bg-black/40 z-40"
-            onClick={() => setIsMobileOpen(false)}
-          />
-          <div className="fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-2xl flex flex-col animate-slide-in"
-            style={{ animation: "slideInLeft 0.3s ease-out" }}>
+          <div className="fixed inset-0 bg-black/40 z-40" onClick={() => setIsMobileOpen(false)} />
+          <div className="fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-2xl flex flex-col animate-fade-in">
             <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
               <span className="text-lg font-light tracking-widest" style={{ fontFamily: "var(--font-serif)" }}>
                 GOWS Perfumerie
               </span>
-              <button onClick={() => setIsMobileOpen(false)}>
-                <X size={20} />
-              </button>
+              <button onClick={() => setIsMobileOpen(false)}><X size={20} /></button>
             </div>
             <nav className="flex flex-col px-6 py-8 gap-6">
               {[
@@ -94,6 +117,7 @@ const Navbar = () => {
                 { to: "/category/femme", label: "Femme" },
                 { to: "/category/unisex", label: "Unisex" },
                 { to: "/category/niche", label: "Niche" },
+                { to: "/wishlist", label: `Favoritos (${wishlist.length})` },
               ].map(({ to, label }) => (
                 <NavLink
                   key={to}
@@ -106,9 +130,7 @@ const Navbar = () => {
               ))}
             </nav>
             <div className="mt-auto px-6 pb-8">
-              <p className="text-[10px] text-gray-400 tracking-widest">
-                Envíos a todo el país · Pago en cuotas
-              </p>
+              <p className="text-[10px] text-gray-400 tracking-widest">Envíos a todo el país · Pago en cuotas</p>
             </div>
           </div>
         </>
