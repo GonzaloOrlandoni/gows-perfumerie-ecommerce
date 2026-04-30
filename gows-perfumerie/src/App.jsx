@@ -6,6 +6,8 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import CartSidebar from './components/Cart/CartSidebar';
 import ScrollToTop from './components/ui/ScrollToTop';
+import AnnouncementBar from './components/ui/AnnouncementBar';
+import WhatsAppFloat from './components/ui/WhatsAppFloat';
 import Hero from './components/Hero/Hero';
 import CategoryBanners from './components/Home/CategoryBanners';
 import Testimonials from './components/Home/Testimonials';
@@ -49,8 +51,13 @@ function App() {
         <WishlistProvider>
           <CartProvider>
             <div className="flex flex-col min-h-screen" style={{ background: 'var(--warm-white)' }}>
+              {/* Top announcement ticker */}
+              <AnnouncementBar />
               <Navbar />
               <CartSidebar />
+
+              {/* Floating elements */}
+              <WhatsAppFloat />
               <ScrollToTop />
 
               <main className="flex-1">

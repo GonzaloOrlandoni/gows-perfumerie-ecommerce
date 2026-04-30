@@ -5,8 +5,10 @@ import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
 import { useToast } from "../../context/ToastContext";
 
-const Item = ({ id, nombre, precio, categoria, img, marca, stock, descripcion, intensidad, notas }) => {
-  const product = { id, nombre, precio, categoria, img, marca, stock, descripcion, intensidad, notas };
+const FALLBACK = "https://placehold.co/800x1066/0a0a0a/C4A265?text=GOWS+Perfumerie";
+
+const Item = ({ id, nombre, precio, categoria, img, marca, stock, descripcion, intensidad, notas, bestseller, isNew, sizes }) => {
+  const product = { id, nombre, precio, categoria, img, marca, stock, descripcion, intensidad, notas, bestseller, isNew, sizes };
   const { addItem } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const { addToast } = useToast();
@@ -28,35 +30,44 @@ const Item = ({ id, nombre, precio, categoria, img, marca, stock, descripcion, i
     e.stopPropagation();
     toggleWishlist(product);
     addToast(
-      isInWishlist(id) ? `${nombre} eliminado de favoritos` : `${nombre} guardado en favoritos ❤️`,
-      isInWishlist(id) ? "info" : "success"
+      inWishlist ? `${nombre} eliminado de favoritos` : `${nombre} guardado en favoritos ❤️`,
+      inWishlist ? "info" : "success"
     );
   };
 
-  const categoryLabel = {
-    niche: "NICHE",
-    homme: "HOMME",
-    femme: "FEMME",
-    unisex: "UNISEX",
-  };
-
+  const categoryLabel = { niche: "NICHE", homme: "HOMME", femme: "FEMME", unisex: "UNISEX" };
   const isLowStock = stock <= 6;
 
   return (
     <Link to={`/item/${id}`} className="group block">
       <div className="bg-white overflow-hidden transition-all duration-400 hover:shadow-xl">
-        {/* Image container */}
+        {/* Image */}
         <div className="relative aspect-[3/4] overflow-hidden bg-gray-50">
           <img
             src={img}
             alt={nombre}
+            onError={(e) => { e.target.onerror = null; e.target.src = FALLBACK; }}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
 
-          {/* Low stock badge */}
+          {/* Bestseller badge */}
+          {bestseller && (
+            <span className="absolute top-3 left-3 bg-[#C4A265] text-[#0A0A0A] text-[8px] tracking-widest uppercase px-2 py-1 font-bold">
+              ★ Bestseller
+            </span>
+          )}
+
+          {/* New badge */}
+          {isNew && !bestseller && (
+            <span className="absolute top-3 left-3 bg-white text-[#0A0A0A] text-[8px] tracking-widest uppercase px-2 py-1 font-bold border border-gray-200">
+              Nuevo
+            </span>
+          )}
+
+          {/* Low stock */}
           {isLowStock && (
-            <span className="absolute top-3 left-3 bg-black text-white text-[9px] tracking-widest uppercase px-2 py-1">
-              Últimas {stock}
+            <span className="absolute bottom-14 left-3 bg-red-500 text-white text-[8px] tracking-widest uppercase px-2 py-1">
+              ¡Últimas {stock}!
             </span>
           )}
 
@@ -68,14 +79,12 @@ const Item = ({ id, nombre, precio, categoria, img, marca, stock, descripcion, i
             {categoryLabel[categoria] || categoria}
           </span>
 
-          {/* Wishlist button */}
+          {/* Wishlist */}
           <button
             onClick={handleWishlist}
             aria-label={inWishlist ? "Quitar de favoritos" : "Agregar a favoritos"}
             className={`absolute bottom-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-              inWishlist
-                ? "bg-red-500 text-white"
-                : "bg-white/80 text-gray-400 hover:bg-white hover:text-red-400"
+              inWishlist ? "bg-red-500 text-white" : "bg-white/80 text-gray-400 hover:bg-white hover:text-red-400"
             }`}
           >
             <Heart size={14} fill={inWishlist ? "currentColor" : "none"} />
@@ -83,17 +92,17 @@ const Item = ({ id, nombre, precio, categoria, img, marca, stock, descripcion, i
 
           {/* Hover overlay */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-400 flex items-end justify-center pb-6 opacity-0 group-hover:opacity-100">
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               <button
                 onClick={handleAddToCart}
-                className="flex items-center gap-2 px-5 py-2.5 text-xs tracking-widest uppercase font-semibold transition-all duration-300"
+                className="flex items-center gap-2 px-4 py-2.5 text-[10px] tracking-widest uppercase font-semibold transition-all duration-300"
                 style={{ background: added ? "#C4A265" : "#0A0A0A", color: "#fff" }}
               >
-                <ShoppingBag size={14} />
+                <ShoppingBag size={13} />
                 {added ? "Agregado" : "Al Carrito"}
               </button>
-              <span className="flex items-center gap-1 bg-white/90 text-black px-4 py-2.5 text-xs tracking-widest uppercase">
-                <Eye size={14} />
+              <span className="flex items-center gap-1 bg-white/90 text-black px-3 py-2.5 text-[10px] tracking-widest uppercase">
+                <Eye size={13} />
                 Ver
               </span>
             </div>

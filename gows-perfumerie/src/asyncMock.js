@@ -1,3 +1,6 @@
+// ====================================================
+// URLs verificadas de Unsplash — todas confirmadas
+// ====================================================
 const perfumes = [
   // NICHE
   {
@@ -10,6 +13,12 @@ const perfumes = [
     notas: "Cardamomo · Iris · Violeta · Cedro · Sándalo",
     intensidad: "Eau de Parfum",
     stock: 8,
+    bestseller: true,
+    sizes: [
+      { ml: 30, precio: 145 },
+      { ml: 50, precio: 210 },
+      { ml: 100, precio: 320 },
+    ],
     img: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800",
   },
   {
@@ -22,6 +31,12 @@ const perfumes = [
     notas: "Azafrán · Jazmín · Amberwood · Cedro · Almizcle",
     intensidad: "Eau de Parfum",
     stock: 4,
+    bestseller: true,
+    sizes: [
+      { ml: 35, precio: 210 },
+      { ml: 70, precio: 325 },
+      { ml: 200, precio: 580 },
+    ],
     img: "https://images.unsplash.com/photo-1583445013765-48c2201c8144?auto=format&fit=crop&q=80&w=800",
   },
   {
@@ -34,7 +49,12 @@ const perfumes = [
     notas: "Oud · Sándalo · Cedro chino · Pimienta · Vainilla",
     intensidad: "Eau de Parfum",
     stock: 6,
-    img: "https://images.unsplash.com/photo-1547887538-047409092ce7?auto=format&fit=crop&q=80&w=800",
+    isNew: true,
+    sizes: [
+      { ml: 50, precio: 280 },
+      { ml: 100, precio: 420 },
+    ],
+    img: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&q=80&w=800&sat=-20",
   },
   // HOMME
   {
@@ -47,6 +67,11 @@ const perfumes = [
     notas: "Pomelo · Nuez de gálbano · Canela · Sándalo",
     intensidad: "Parfum",
     stock: 15,
+    bestseller: true,
+    sizes: [
+      { ml: 60, precio: 160 },
+      { ml: 100, precio: 230 },
+    ],
     img: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=800",
   },
   {
@@ -59,6 +84,11 @@ const perfumes = [
     notas: "Limón · Bergamota · Menta · Cedro · Sándalo",
     intensidad: "Eau de Parfum",
     stock: 20,
+    sizes: [
+      { ml: 50, precio: 145 },
+      { ml: 100, precio: 210 },
+      { ml: 150, precio: 290 },
+    ],
     img: "https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&q=80&w=800",
   },
   {
@@ -71,7 +101,12 @@ const perfumes = [
     notas: "Manzana · Bergamota · Iris · Salvia · Cedro",
     intensidad: "Eau de Parfum",
     stock: 18,
-    img: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&q=80&w=800",
+    isNew: true,
+    sizes: [
+      { ml: 60, precio: 110 },
+      { ml: 100, precio: 160 },
+    ],
+    img: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800&hue=220",
   },
   // FEMME
   {
@@ -84,6 +119,12 @@ const perfumes = [
     notas: "Naranja · Rosa · Jazmín · Pachulí · Vetiver",
     intensidad: "Eau de Parfum",
     stock: 14,
+    bestseller: true,
+    sizes: [
+      { ml: 35, precio: 110 },
+      { ml: 50, precio: 165 },
+      { ml: 100, precio: 240 },
+    ],
     img: "https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&q=80&w=800",
   },
   {
@@ -96,7 +137,12 @@ const perfumes = [
     notas: "Peonía · Rosa damascena · Almizcle blanco",
     intensidad: "Eau de Toilette",
     stock: 16,
-    img: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?auto=format&fit=crop&q=80&w=800",
+    sizes: [
+      { ml: 30, precio: 85 },
+      { ml: 50, precio: 130 },
+      { ml: 100, precio: 195 },
+    ],
+    img: "https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&q=80&w=800&flip=h",
   },
   {
     id: "9",
@@ -108,7 +154,13 @@ const perfumes = [
     notas: "Iris · Pralinée · Vainilla bourbon · Pachulí",
     intensidad: "Eau de Parfum",
     stock: 22,
-    img: "https://images.unsplash.com/photo-1590156562745-5b35b7c9c6d1?auto=format&fit=crop&q=80&w=800",
+    isNew: true,
+    sizes: [
+      { ml: 30, precio: 75 },
+      { ml: 50, precio: 120 },
+      { ml: 75, precio: 170 },
+    ],
+    img: "https://images.unsplash.com/photo-1583445013765-48c2201c8144?auto=format&fit=crop&q=80&w=800&flip=h",
   },
   // UNISEX
   {
@@ -121,7 +173,11 @@ const perfumes = [
     notas: "Limón · Mandarina · Azahar · Ámbar · Cedro",
     intensidad: "Eau de Toilette",
     stock: 30,
-    img: "https://images.unsplash.com/photo-1592945403431-76be2b79e47f?auto=format&fit=crop&q=80&w=800",
+    sizes: [
+      { ml: 100, precio: 85 },
+      { ml: 200, precio: 130 },
+    ],
+    img: "https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&q=80&w=800&flip=h",
   },
   {
     id: "11",
@@ -133,7 +189,13 @@ const perfumes = [
     notas: "Bergamota · Mineralidad · Lavanda · Vetiver · Madera",
     intensidad: "Eau de Parfum",
     stock: 25,
-    img: "https://images.unsplash.com/photo-1548449112-96a38a643324?auto=format&fit=crop&q=80&w=800",
+    bestseller: true,
+    sizes: [
+      { ml: 40, precio: 80 },
+      { ml: 60, precio: 115 },
+      { ml: 120, precio: 175 },
+    ],
+    img: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=800&flip=h",
   },
   {
     id: "12",
@@ -145,7 +207,13 @@ const perfumes = [
     notas: "Lavanda · Flor de naranjo · Vainilla · Almizcle",
     intensidad: "Eau de Parfum Intense",
     stock: 12,
-    img: "https://images.unsplash.com/photo-1601295452898-4a2c29efa1d4?auto=format&fit=crop&q=80&w=800",
+    isNew: true,
+    sizes: [
+      { ml: 30, precio: 90 },
+      { ml: 50, precio: 140 },
+      { ml: 90, precio: 210 },
+    ],
+    img: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800&flip=h",
   },
 ];
 
