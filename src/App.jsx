@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { ToastProvider } from './context/ToastContext';
@@ -46,7 +46,7 @@ const NotFound = () => (
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ToastProvider>
         <WishlistProvider>
           <CartProvider>
@@ -75,7 +75,7 @@ function App() {
           </CartProvider>
         </WishlistProvider>
       </ToastProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
