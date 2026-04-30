@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, MessageCircle } from "lucide-react";
-
+import { Instagram, Facebook, Twitter } from 'lucide-react';
 const Footer = () => {
   return (
     <footer className="bg-[#0A0A0A] text-gray-400 mt-20">

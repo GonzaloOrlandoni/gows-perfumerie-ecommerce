@@ -1,15 +1,19 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --gold: #C4A265;
-  --gold-light: #D4B480;
-  --dark: #0A0A0A;
-  --warm-white: #FAFAF8;
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Inter', sans-serif;
+  --gold: #c4a265;
+  --gold-light: #d4b480;
+  --dark: #0a0a0a;
+  --warm-white: #fafaf8;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", sans-serif;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   background-color: var(--warm-white);
@@ -19,16 +23,25 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.font-serif { font-family: var(--font-serif) !important; }
+.font-serif {
+  font-family: var(--font-serif) !important;
+}
 
 /* Luxury scrollbar */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 3px;
+}
 
 /* Gold accent line */
 .gold-line::after {
-  content: '';
+  content: "";
   display: block;
   width: 40px;
   height: 1px;
@@ -43,17 +56,33 @@ body {
 
 /* Cart slide-in animation */
 @keyframes slideIn {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-slide-in { animation: slideIn 0.35s ease-out forwards; }
-.animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+.animate-slide-in {
+  animation: slideIn 0.35s ease-out forwards;
+}
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
 
 /* Skeleton loading */
 .skeleton {
@@ -63,6 +92,10 @@ body {
 }
 
 @keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
