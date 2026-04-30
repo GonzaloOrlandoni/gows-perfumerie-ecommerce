@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![GOWS Perfumerie Banner](https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&q=80&w=1200&h=400)
+![GOWS Perfumerie Banner](./public/preview.png)
 
 **E-commerce de fragancias de alta gama · Luxury Perfume Store**
 

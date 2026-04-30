@@ -70,6 +70,7 @@ const CartSidebar = () => {
                     <img
                       src={item.img}
                       alt={item.nombre}
+                      onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/800x1066/0a0a0a/C4A265?text=GOWS+Perfumerie"; }}
                       className="w-full h-full object-cover"
                     />
                   </div>

@@ -64,6 +64,7 @@ const WishlistPage = () => {
                     <img
                       src={product.img}
                       alt={product.nombre}
+                      onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/800x1066/0a0a0a/C4A265?text=GOWS+Perfumerie"; }}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>

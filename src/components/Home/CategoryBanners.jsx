@@ -60,6 +60,7 @@ const CategoryBanners = () => {
             <img
               src={cat.img}
               alt={cat.label}
+              onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/800x800/0a0a0a/C4A265?text=GOWS+Perfumerie"; }}
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
 
