@@ -1,20 +1,20 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
-import { CartProvider } from './context/CartContext';
-import { WishlistProvider } from './context/WishlistContext';
-import { ToastProvider } from './context/ToastContext';
-import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
-import CartSidebar from './components/Cart/CartSidebar';
-import ScrollToTop from './components/ui/ScrollToTop';
-import AnnouncementBar from './components/ui/AnnouncementBar';
-import WhatsAppFloat from './components/ui/WhatsAppFloat';
-import Hero from './components/Hero/Hero';
-import CategoryBanners from './components/Home/CategoryBanners';
-import Testimonials from './components/Home/Testimonials';
-import Newsletter from './components/Home/Newsletter';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemDetail from './components/ItemDetail/ItemDetail';
-import WishlistPage from './components/Wishlist/WishlistPage';
+import { HashRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
+import { WishlistProvider } from "./context/WishlistContext";
+import { ToastProvider } from "./context/ToastContext";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import CartSidebar from "./components/Cart/CartSidebar";
+import ScrollToTop from "./components/ui/ScrollToTop";
+import AnnouncementBar from "./components/ui/AnnouncementBar";
+import WhatsAppFloat from "./components/ui/WhatsAppFloat";
+import Hero from "./components/Hero/Hero";
+import CategoryBanners from "./components/Home/CategoryBanners";
+import Testimonials from "./components/Home/Testimonials";
+import Newsletter from "./components/Home/Newsletter";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import ItemDetail from "./components/ItemDetail/ItemDetail";
+import WishlistPage from "./components/Wishlist/WishlistPage";
 
 const HomePage = () => (
   <>
@@ -28,8 +28,13 @@ const HomePage = () => (
 
 const NotFound = () => (
   <div className="flex flex-col items-center justify-center min-h-[70vh] text-center px-4">
-    <p className="text-[#C4A265] text-[10px] tracking-[0.4em] uppercase mb-4">Error 404</p>
-    <h1 className="text-7xl font-light text-gray-900 mb-4" style={{ fontFamily: 'var(--font-serif)' }}>
+    <p className="text-[#C4A265] text-[10px] tracking-[0.4em] uppercase mb-4">
+      Error 404
+    </p>
+    <h1
+      className="text-7xl font-light text-gray-900 mb-4"
+      style={{ fontFamily: "var(--font-serif)" }}
+    >
       Oops
     </h1>
     <p className="text-gray-500 text-sm tracking-wider mb-10">
@@ -50,7 +55,10 @@ function App() {
       <ToastProvider>
         <WishlistProvider>
           <CartProvider>
-            <div className="flex flex-col min-h-screen" style={{ background: 'var(--warm-white)' }}>
+            <div
+              className="flex flex-col min-h-screen"
+              style={{ background: "var(--warm-white)" }}
+            >
               {/* Top announcement ticker */}
               <AnnouncementBar />
               <Navbar />
@@ -63,7 +71,10 @@ function App() {
               <main className="flex-1">
                 <Routes>
                   <Route path="/" element={<HomePage />} />
-                  <Route path="/category/:categoryId" element={<ItemListContainer />} />
+                  <Route
+                    path="/category/:categoryId"
+                    element={<ItemListContainer />}
+                  />
                   <Route path="/item/:itemId" element={<ItemDetail />} />
                   <Route path="/wishlist" element={<WishlistPage />} />
                   <Route path="*" element={<NotFound />} />

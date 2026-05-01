@@ -57,7 +57,8 @@ const ItemListContainer = ({ greeting }) => {
     const arr = [...products];
     if (sortBy === "price-asc") arr.sort((a, b) => a.precio - b.precio);
     else if (sortBy === "price-desc") arr.sort((a, b) => b.precio - a.precio);
-    else if (sortBy === "name-asc") arr.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    else if (sortBy === "name-asc")
+      arr.sort((a, b) => a.nombre.localeCompare(b.nombre));
     setSorted(arr);
   }, [sortBy, products]);
 
@@ -65,20 +66,33 @@ const ItemListContainer = ({ greeting }) => {
   const currentSortLabel = SORT_OPTIONS.find((o) => o.value === sortBy)?.label;
 
   return (
-    <div id="catalogo" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 animate-fade-in">
+    <div
+      id="catalogo"
+      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 animate-fade-in"
+    >
       {/* Section header */}
       <div className="text-center mb-10">
         {catInfo ? (
           <>
-            <p className="text-[10px] tracking-[0.4em] text-[#C4A265] uppercase mb-3">{catInfo.sub}</p>
-            <h2 className="text-4xl font-light text-gray-900" style={{ fontFamily: "var(--font-serif)" }}>
+            <p className="text-[10px] tracking-[0.4em] text-[#C4A265] uppercase mb-3">
+              {catInfo.sub}
+            </p>
+            <h2
+              className="text-4xl font-light text-gray-900"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
               {catInfo.title}
             </h2>
           </>
         ) : (
           <>
-            <p className="text-[10px] tracking-[0.4em] text-[#C4A265] uppercase mb-3">Colección Completa</p>
-            <h2 className="text-4xl font-light text-gray-900" style={{ fontFamily: "var(--font-serif)" }}>
+            <p className="text-[10px] tracking-[0.4em] text-[#C4A265] uppercase mb-3">
+              Colección Completa
+            </p>
+            <h2
+              className="text-4xl font-light text-gray-900"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
               {greeting || "Todas las Fragancias"}
             </h2>
           </>
@@ -107,7 +121,10 @@ const ItemListContainer = ({ greeting }) => {
                 {SORT_OPTIONS.map((opt) => (
                   <button
                     key={opt.value}
-                    onClick={() => { setSortBy(opt.value); setShowSort(false); }}
+                    onClick={() => {
+                      setSortBy(opt.value);
+                      setShowSort(false);
+                    }}
                     className={`block w-full text-left px-4 py-3 text-xs tracking-wider transition-colors ${
                       sortBy === opt.value
                         ? "text-[#C4A265] bg-gray-50"
@@ -126,7 +143,9 @@ const ItemListContainer = ({ greeting }) => {
       {/* Content */}
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[...Array(8)].map((_, i) => <SkeletonCard key={i} />)}
+          {[...Array(8)].map((_, i) => (
+            <SkeletonCard key={i} />
+          ))}
         </div>
       ) : sorted.length === 0 ? (
         <div className="text-center py-20">

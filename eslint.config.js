@@ -1,25 +1,23 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
+import js from "@eslint/js";
+import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
 
 export default [
-  { ignores: ['dist'] },
+  { ignores: ["dist"] },
   {
-    files: ['**/*.{js,jsx}'],
-    extends: [
-      js.configs.recommended,
-    ],
+    files: ["**/*.{js,jsx}"],
+    extends: [js.configs.recommended],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
       parserOptions: {
-        ecmaVersion: 'latest',
+        ecmaVersion: "latest",
         ecmaFeatures: { jsx: true },
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
     },
   },
-]
+];

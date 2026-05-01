@@ -1,12 +1,11 @@
-import { Instagram, MessageCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Instagram, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="bg-[#0A0A0A] text-gray-400 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-
           {/* Brand */}
           <div className="md:col-span-2">
             <h3
@@ -19,8 +18,8 @@ const Footer = () => {
               Perfumerie
             </p>
             <p className="text-sm font-light leading-relaxed text-gray-500 max-w-xs mb-6">
-              Fragancias de alta gama, nicho y exclusivas. Curada selección de las mejores
-              casas perfumeras del mundo. Envíos a todo Argentina.
+              Fragancias de alta gama, nicho y exclusivas. Curada selección de
+              las mejores casas perfumeras del mundo. Envíos a todo Argentina.
             </p>
             <div className="flex gap-3">
               <a
@@ -106,7 +105,10 @@ const Footer = () => {
           <p>© 2026 GOWS Perfumerie. Todos los derechos reservados.</p>
           <p>
             Desarrollado por{" "}
-            <a href="https://gonzaloorlandoni.vercel.app" className="text-[#C4A265] hover:text-[#D4B480] transition-colors">
+            <a
+              href="https://gonzaloorlandoni.vercel.app"
+              className="text-[#C4A265] hover:text-[#D4B480] transition-colors"
+            >
               GO Web Solutions
             </a>
           </p>

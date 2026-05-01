@@ -1,4 +1,11 @@
-import { X, Minus, Plus, Trash2, MessageCircle, ShoppingBag } from "lucide-react";
+import {
+  X,
+  Minus,
+  Plus,
+  Trash2,
+  MessageCircle,
+  ShoppingBag,
+} from "lucide-react";
 import { useCart } from "../../context/CartContext";
 
 const CartSidebar = () => {
@@ -36,7 +43,8 @@ const CartSidebar = () => {
               Mi Carrito
             </h2>
             <p className="text-xs text-gray-400 tracking-wider">
-              {getTotalItems()} {getTotalItems() === 1 ? "artículo" : "artículos"}
+              {getTotalItems()}{" "}
+              {getTotalItems() === 1 ? "artículo" : "artículos"}
             </p>
           </div>
           <button
@@ -65,12 +73,19 @@ const CartSidebar = () => {
           ) : (
             <div className="space-y-5">
               {cart.map((item) => (
-                <div key={item.id} className="flex gap-4 py-4 border-b border-gray-50">
+                <div
+                  key={item.id}
+                  className="flex gap-4 py-4 border-b border-gray-50"
+                >
                   <div className="w-20 h-24 flex-shrink-0 overflow-hidden bg-gray-50">
                     <img
                       src={item.img}
                       alt={item.nombre}
-                      onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/800x1066/0a0a0a/C4A265?text=GOWS+Perfumerie"; }}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src =
+                          "https://placehold.co/800x1066/0a0a0a/C4A265?text=GOWS+Perfumerie";
+                      }}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -90,7 +105,9 @@ const CartSidebar = () => {
                     <div className="flex items-center justify-between mt-3">
                       <div className="flex items-center border border-gray-200">
                         <button
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity - 1)
+                          }
                           className="p-1.5 hover:bg-gray-50 transition-colors"
                         >
                           <Minus size={10} />
@@ -99,7 +116,9 @@ const CartSidebar = () => {
                           {item.quantity}
                         </span>
                         <button
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity + 1)
+                          }
                           className="p-1.5 hover:bg-gray-50 transition-colors"
                         >
                           <Plus size={10} />
@@ -127,7 +146,10 @@ const CartSidebar = () => {
               <span className="text-xs tracking-widest text-gray-400 uppercase">
                 Total Estimado
               </span>
-              <span className="text-xl font-light" style={{ fontFamily: "var(--font-serif)" }}>
+              <span
+                className="text-xl font-light"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
                 USD ${getTotalPrice().toLocaleString()}
               </span>
             </div>

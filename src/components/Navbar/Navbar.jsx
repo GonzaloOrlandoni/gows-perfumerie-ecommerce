@@ -22,7 +22,6 @@ const Navbar = () => {
       <nav className="bg-white border-b border-gray-100 sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-
             {/* Mobile hamburger */}
             <button
               className="md:hidden p-2 text-gray-600"
@@ -33,7 +32,10 @@ const Navbar = () => {
             </button>
 
             {/* Logo */}
-            <Link to="/" className="flex-shrink-0 flex flex-col items-center md:items-start">
+            <Link
+              to="/"
+              className="flex-shrink-0 flex flex-col items-center md:items-start"
+            >
               <span
                 className="text-2xl font-light tracking-[0.35em] text-gray-900"
                 style={{ fontFamily: "var(--font-serif)" }}
@@ -47,10 +49,18 @@ const Navbar = () => {
 
             {/* Desktop nav */}
             <div className="hidden md:flex items-center space-x-10">
-              <NavLink to="/category/homme" className={navLinkClass}>Homme</NavLink>
-              <NavLink to="/category/femme" className={navLinkClass}>Femme</NavLink>
-              <NavLink to="/category/unisex" className={navLinkClass}>Unisex</NavLink>
-              <NavLink to="/category/niche" className={navLinkClass}>Niche</NavLink>
+              <NavLink to="/category/homme" className={navLinkClass}>
+                Homme
+              </NavLink>
+              <NavLink to="/category/femme" className={navLinkClass}>
+                Femme
+              </NavLink>
+              <NavLink to="/category/unisex" className={navLinkClass}>
+                Unisex
+              </NavLink>
+              <NavLink to="/category/niche" className={navLinkClass}>
+                Niche
+              </NavLink>
             </div>
 
             {/* Icons */}
@@ -97,18 +107,29 @@ const Navbar = () => {
       </nav>
 
       {/* Search Modal */}
-      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
 
       {/* Mobile Menu */}
       {isMobileOpen && (
         <>
-          <div className="fixed inset-0 bg-black/40 z-40" onClick={() => setIsMobileOpen(false)} />
+          <div
+            className="fixed inset-0 bg-black/40 z-40"
+            onClick={() => setIsMobileOpen(false)}
+          />
           <div className="fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-2xl flex flex-col animate-fade-in">
             <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
-              <span className="text-lg font-light tracking-widest" style={{ fontFamily: "var(--font-serif)" }}>
+              <span
+                className="text-lg font-light tracking-widest"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
                 GOWS Perfumerie
               </span>
-              <button onClick={() => setIsMobileOpen(false)}><X size={20} /></button>
+              <button onClick={() => setIsMobileOpen(false)}>
+                <X size={20} />
+              </button>
             </div>
             <nav className="flex flex-col px-6 py-8 gap-6">
               {[
@@ -130,7 +151,9 @@ const Navbar = () => {
               ))}
             </nav>
             <div className="mt-auto px-6 pb-8">
-              <p className="text-[10px] text-gray-400 tracking-widest">Envíos a todo el país · Pago en cuotas</p>
+              <p className="text-[10px] text-gray-400 tracking-widest">
+                Envíos a todo el país · Pago en cuotas
+              </p>
             </div>
           </div>
         </>

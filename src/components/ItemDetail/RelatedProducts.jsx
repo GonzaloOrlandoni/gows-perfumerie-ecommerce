@@ -13,7 +13,7 @@ const RelatedProducts = ({ currentId, categoria }) => {
   useEffect(() => {
     getProducts()
       .then((all) =>
-        all.filter((p) => p.categoria === categoria && p.id !== currentId)
+        all.filter((p) => p.categoria === categoria && p.id !== currentId),
       )
       .then((filtered) => setRelated(filtered.slice(0, 4)));
   }, [currentId, categoria]);
@@ -43,13 +43,21 @@ const RelatedProducts = ({ currentId, categoria }) => {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {related.map((product) => (
-          <Link key={product.id} to={`/item/${product.id}`} className="group block">
+          <Link
+            key={product.id}
+            to={`/item/${product.id}`}
+            className="group block"
+          >
             <div className="bg-white overflow-hidden">
               <div className="relative aspect-[3/4] overflow-hidden bg-gray-50">
                 <img
                   src={product.img}
                   alt={product.nombre}
-                  onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/800x1066/0a0a0a/C4A265?text=GOWS+Perfumerie"; }}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://placehold.co/800x1066/0a0a0a/C4A265?text=GOWS+Perfumerie";
+                  }}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <button
@@ -69,7 +77,9 @@ const RelatedProducts = ({ currentId, categoria }) => {
                 >
                   {product.nombre}
                 </p>
-                <p className="text-xs text-gray-500 mt-0.5">USD ${product.precio}</p>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  USD ${product.precio}
+                </p>
               </div>
             </div>
           </Link>

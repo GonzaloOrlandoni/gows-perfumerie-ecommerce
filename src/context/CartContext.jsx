@@ -25,7 +25,7 @@ export const CartProvider = ({ children }) => {
         return prev.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + quantity }
-            : item
+            : item,
         );
       }
       return [...prev, { ...product, quantity }];
@@ -40,13 +40,14 @@ export const CartProvider = ({ children }) => {
   const updateQuantity = (id, quantity) => {
     if (quantity < 1) return removeItem(id);
     setCart((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
+      prev.map((item) => (item.id === id ? { ...item, quantity } : item)),
     );
   };
 
   const clearCart = () => setCart([]);
 
-  const getTotalItems = () => cart.reduce((acc, item) => acc + item.quantity, 0);
+  const getTotalItems = () =>
+    cart.reduce((acc, item) => acc + item.quantity, 0);
 
   const getTotalPrice = () =>
     cart.reduce((acc, item) => acc + item.precio * item.quantity, 0);
@@ -54,11 +55,17 @@ export const CartProvider = ({ children }) => {
   const handleWhatsAppCheckout = () => {
     const phoneNumber = "5491128831895";
     const items = cart
-      .map((item) => `• ${item.quantity}x ${item.nombre} (${item.marca}) — $${item.precio * item.quantity}`)
+      .map(
+        (item) =>
+          `• ${item.quantity}x ${item.nombre} (${item.marca}) — $${item.precio * item.quantity}`,
+      )
       .join("\n");
     const total = getTotalPrice().toLocaleString("es-AR");
     const message = `Hola GOWS Perfumerie! 🌹\n\nQuiero realizar el siguiente pedido:\n\n${items}\n\n*Total: $${total}*\n\n¿Cómo procedo con el pago y envío?`;
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(
+      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
+      "_blank",
+    );
   };
 
   return (

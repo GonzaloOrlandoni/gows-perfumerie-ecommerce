@@ -69,7 +69,9 @@ const Testimonials = () => {
               </p>
               <div className="border-t border-white/10 pt-5">
                 <p className="text-white text-sm font-medium">{t.name}</p>
-                <p className="text-gray-500 text-xs tracking-wider">{t.location}</p>
+                <p className="text-gray-500 text-xs tracking-wider">
+                  {t.location}
+                </p>
                 <p className="text-[#C4A265] text-[10px] tracking-widest uppercase mt-1">
                   {t.perfume}
                 </p>

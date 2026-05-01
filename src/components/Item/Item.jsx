@@ -5,10 +5,39 @@ import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
 import { useToast } from "../../context/ToastContext";
 
-const FALLBACK = "https://placehold.co/800x1066/0a0a0a/C4A265?text=GOWS+Perfumerie";
+const FALLBACK =
+  "https://placehold.co/800x1066/0a0a0a/C4A265?text=GOWS+Perfumerie";
 
-const Item = ({ id, nombre, precio, categoria, img, marca, stock, descripcion, intensidad, notas, bestseller, isNew, sizes }) => {
-  const product = { id, nombre, precio, categoria, img, marca, stock, descripcion, intensidad, notas, bestseller, isNew, sizes };
+const Item = ({
+  id,
+  nombre,
+  precio,
+  categoria,
+  img,
+  marca,
+  stock,
+  descripcion,
+  intensidad,
+  notas,
+  bestseller,
+  isNew,
+  sizes,
+}) => {
+  const product = {
+    id,
+    nombre,
+    precio,
+    categoria,
+    img,
+    marca,
+    stock,
+    descripcion,
+    intensidad,
+    notas,
+    bestseller,
+    isNew,
+    sizes,
+  };
   const { addItem } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const { addToast } = useToast();
@@ -30,12 +59,19 @@ const Item = ({ id, nombre, precio, categoria, img, marca, stock, descripcion, i
     e.stopPropagation();
     toggleWishlist(product);
     addToast(
-      inWishlist ? `${nombre} eliminado de favoritos` : `${nombre} guardado en favoritos ❤️`,
-      inWishlist ? "info" : "success"
+      inWishlist
+        ? `${nombre} eliminado de favoritos`
+        : `${nombre} guardado en favoritos ❤️`,
+      inWishlist ? "info" : "success",
     );
   };
 
-  const categoryLabel = { niche: "NICHE", homme: "HOMME", femme: "FEMME", unisex: "UNISEX" };
+  const categoryLabel = {
+    niche: "NICHE",
+    homme: "HOMME",
+    femme: "FEMME",
+    unisex: "UNISEX",
+  };
   const isLowStock = stock <= 6;
 
   return (
@@ -46,7 +82,10 @@ const Item = ({ id, nombre, precio, categoria, img, marca, stock, descripcion, i
           <img
             src={img}
             alt={nombre}
-            onError={(e) => { e.target.onerror = null; e.target.src = FALLBACK; }}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = FALLBACK;
+            }}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
 
@@ -82,9 +121,13 @@ const Item = ({ id, nombre, precio, categoria, img, marca, stock, descripcion, i
           {/* Wishlist */}
           <button
             onClick={handleWishlist}
-            aria-label={inWishlist ? "Quitar de favoritos" : "Agregar a favoritos"}
+            aria-label={
+              inWishlist ? "Quitar de favoritos" : "Agregar a favoritos"
+            }
             className={`absolute bottom-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-              inWishlist ? "bg-red-500 text-white" : "bg-white/80 text-gray-400 hover:bg-white hover:text-red-400"
+              inWishlist
+                ? "bg-red-500 text-white"
+                : "bg-white/80 text-gray-400 hover:bg-white hover:text-red-400"
             }`}
           >
             <Heart size={14} fill={inWishlist ? "currentColor" : "none"} />
@@ -96,7 +139,10 @@ const Item = ({ id, nombre, precio, categoria, img, marca, stock, descripcion, i
               <button
                 onClick={handleAddToCart}
                 className="flex items-center gap-2 px-4 py-2.5 text-[10px] tracking-widest uppercase font-semibold transition-all duration-300"
-                style={{ background: added ? "#C4A265" : "#0A0A0A", color: "#fff" }}
+                style={{
+                  background: added ? "#C4A265" : "#0A0A0A",
+                  color: "#fff",
+                }}
               >
                 <ShoppingBag size={13} />
                 {added ? "Agregado" : "Al Carrito"}
@@ -111,7 +157,9 @@ const Item = ({ id, nombre, precio, categoria, img, marca, stock, descripcion, i
 
         {/* Info */}
         <div className="p-4">
-          <p className="text-[10px] tracking-[0.2em] text-gray-400 uppercase mb-1">{marca}</p>
+          <p className="text-[10px] tracking-[0.2em] text-gray-400 uppercase mb-1">
+            {marca}
+          </p>
           <h3
             className="text-gray-900 text-lg font-light mb-1 leading-tight group-hover:text-[#C4A265] transition-colors duration-300"
             style={{ fontFamily: "var(--font-serif)" }}
@@ -119,7 +167,9 @@ const Item = ({ id, nombre, precio, categoria, img, marca, stock, descripcion, i
             {nombre}
           </h3>
           <div className="flex items-center justify-between mt-2">
-            <span className="text-sm font-medium text-gray-900">USD ${precio}</span>
+            <span className="text-sm font-medium text-gray-900">
+              USD ${precio}
+            </span>
             <div className="w-6 h-px bg-[#C4A265]" />
           </div>
         </div>

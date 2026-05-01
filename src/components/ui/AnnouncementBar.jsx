@@ -11,7 +11,10 @@ const AnnouncementBar = () => {
   const repeated = [...messages, ...messages]; // duplicar para loop infinito
 
   return (
-    <div className="bg-[#0A0A0A] text-white overflow-hidden py-2.5" aria-label="Anuncios">
+    <div
+      className="bg-[#0A0A0A] text-white overflow-hidden py-2.5"
+      aria-label="Anuncios"
+    >
       <div
         className="flex whitespace-nowrap"
         style={{

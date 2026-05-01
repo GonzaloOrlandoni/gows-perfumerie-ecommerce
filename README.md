@@ -28,22 +28,22 @@ Desarrollado como parte del portfolio de **[GO Web Solutions](https://gonzaloorl
 
 ## ✨ Features
 
-| Feature | Descripción |
-|---|---|
-| 🛍️ **Carrito persistente** | Estado guardado en `localStorage`, sobrevive al refresco |
-| ❤️ **Wishlist / Favoritos** | Guardá productos para después, también persiste |
-| 🔍 **Búsqueda en tiempo real** | Filtra por nombre, marca, categoría y descripción |
-| 🔔 **Sistema de Toasts** | Notificaciones success/error/info con auto-dismiss |
-| 📦 **Catálogo completo** | 12 fragancias en 4 categorías (Niche, Homme, Femme, Unisex) |
-| 🔽 **Ordenar productos** | Por precio (asc/desc) y nombre (A-Z) |
-| 📱 **Mobile responsive** | Menú hamburguesa, diseño adaptativo completo |
-| 🌟 **Productos relacionados** | En la página de detalle, productos de la misma categoría |
-| 💬 **Checkout por WhatsApp** | Mensaje pre-formateado con el detalle del pedido |
-| 🏷️ **Category banners** | Grid visual de navegación por categoría |
-| ⭐ **Testimonios** | Sección de reseñas de clientes |
-| 📧 **Newsletter** | Captura de email para suscripción |
-| 🔝 **Scroll to top** | Botón flotante para volver al inicio |
-| 🔥 **Firebase ready** | Config lista para conectar Firestore como base de datos real |
+| Feature                        | Descripción                                                  |
+| ------------------------------ | ------------------------------------------------------------ |
+| 🛍️ **Carrito persistente**     | Estado guardado en `localStorage`, sobrevive al refresco     |
+| ❤️ **Wishlist / Favoritos**    | Guardá productos para después, también persiste              |
+| 🔍 **Búsqueda en tiempo real** | Filtra por nombre, marca, categoría y descripción            |
+| 🔔 **Sistema de Toasts**       | Notificaciones success/error/info con auto-dismiss           |
+| 📦 **Catálogo completo**       | 12 fragancias en 4 categorías (Niche, Homme, Femme, Unisex)  |
+| 🔽 **Ordenar productos**       | Por precio (asc/desc) y nombre (A-Z)                         |
+| 📱 **Mobile responsive**       | Menú hamburguesa, diseño adaptativo completo                 |
+| 🌟 **Productos relacionados**  | En la página de detalle, productos de la misma categoría     |
+| 💬 **Checkout por WhatsApp**   | Mensaje pre-formateado con el detalle del pedido             |
+| 🏷️ **Category banners**        | Grid visual de navegación por categoría                      |
+| ⭐ **Testimonios**             | Sección de reseñas de clientes                               |
+| 📧 **Newsletter**              | Captura de email para suscripción                            |
+| 🔝 **Scroll to top**           | Botón flotante para volver al inicio                         |
+| 🔥 **Firebase ready**          | Config lista para conectar Firestore como base de datos real |
 
 ---
 
@@ -174,32 +174,32 @@ src/
 
 ## 🌐 Rutas
 
-| Ruta | Componente | Descripción |
-|---|---|---|
-| `/` | `HomePage` | Hero + Banners + Catálogo + Testimonios + Newsletter |
-| `/category/:categoryId` | `ItemListContainer` | Catálogo filtrado (homme, femme, unisex, niche) |
-| `/item/:itemId` | `ItemDetail` | Detalle de producto + relacionados |
-| `/wishlist` | `WishlistPage` | Productos guardados como favoritos |
-| `*` | `NotFound` | Página 404 elegante |
+| Ruta                    | Componente          | Descripción                                          |
+| ----------------------- | ------------------- | ---------------------------------------------------- |
+| `/`                     | `HomePage`          | Hero + Banners + Catálogo + Testimonios + Newsletter |
+| `/category/:categoryId` | `ItemListContainer` | Catálogo filtrado (homme, femme, unisex, niche)      |
+| `/item/:itemId`         | `ItemDetail`        | Detalle de producto + relacionados                   |
+| `/wishlist`             | `WishlistPage`      | Productos guardados como favoritos                   |
+| `*`                     | `NotFound`          | Página 404 elegante                                  |
 
 ---
 
 ## 📦 Catálogo de Productos
 
-| # | Nombre | Marca | Categoría | Precio |
-|---|---|---|---|---|
-| 1 | Santal 33 | Le Labo | Niche | USD $210 |
-| 2 | Baccarat Rouge 540 | Maison Francis Kurkdjian | Niche | USD $325 |
-| 3 | Oud Wood | Tom Ford | Niche | USD $280 |
-| 4 | Sauvage Elixir | Dior | Homme | USD $160 |
-| 5 | Bleu de Chanel EDP | Chanel | Homme | USD $145 |
-| 6 | Y EDP Intense | YSL | Homme | USD $110 |
-| 7 | Coco Mademoiselle | Chanel | Femme | USD $165 |
-| 8 | Miss Dior Blooming Bouquet | Dior | Femme | USD $130 |
-| 9 | La Vie Est Belle | Lancôme | Femme | USD $120 |
-| 10 | CK One Gold | Calvin Klein | Unisex | USD $85 |
-| 11 | Acqua di Giò Profondo | Giorgio Armani | Unisex | USD $115 |
-| 12 | Libre Intense | YSL | Unisex | USD $140 |
+| #   | Nombre                     | Marca                    | Categoría | Precio   |
+| --- | -------------------------- | ------------------------ | --------- | -------- |
+| 1   | Santal 33                  | Le Labo                  | Niche     | USD $210 |
+| 2   | Baccarat Rouge 540         | Maison Francis Kurkdjian | Niche     | USD $325 |
+| 3   | Oud Wood                   | Tom Ford                 | Niche     | USD $280 |
+| 4   | Sauvage Elixir             | Dior                     | Homme     | USD $160 |
+| 5   | Bleu de Chanel EDP         | Chanel                   | Homme     | USD $145 |
+| 6   | Y EDP Intense              | YSL                      | Homme     | USD $110 |
+| 7   | Coco Mademoiselle          | Chanel                   | Femme     | USD $165 |
+| 8   | Miss Dior Blooming Bouquet | Dior                     | Femme     | USD $130 |
+| 9   | La Vie Est Belle           | Lancôme                  | Femme     | USD $120 |
+| 10  | CK One Gold                | Calvin Klein             | Unisex    | USD $85  |
+| 11  | Acqua di Giò Profondo      | Giorgio Armani           | Unisex    | USD $115 |
+| 12  | Libre Intense              | YSL                      | Unisex    | USD $140 |
 
 ---
 

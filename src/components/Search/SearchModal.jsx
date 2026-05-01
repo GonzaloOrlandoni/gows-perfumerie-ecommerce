@@ -24,7 +24,9 @@ const SearchModal = ({ isOpen, onClose }) => {
       setQuery("");
       setResults([]);
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   // Filter products
@@ -39,14 +41,16 @@ const SearchModal = ({ isOpen, onClose }) => {
         p.nombre.toLowerCase().includes(q) ||
         p.marca.toLowerCase().includes(q) ||
         p.categoria.toLowerCase().includes(q) ||
-        (p.descripcion && p.descripcion.toLowerCase().includes(q))
+        (p.descripcion && p.descripcion.toLowerCase().includes(q)),
     );
     setResults(filtered.slice(0, 6));
   }, [query, allProducts]);
 
   // Close on Escape
   useEffect(() => {
-    const handler = (e) => { if (e.key === "Escape") onClose(); };
+    const handler = (e) => {
+      if (e.key === "Escape") onClose();
+    };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [onClose]);
@@ -129,7 +133,11 @@ const SearchModal = ({ isOpen, onClose }) => {
                       <img
                         src={product.img}
                         alt={product.nombre}
-                        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/800x1066/0a0a0a/C4A265?text=GOWS+Perfumerie"; }}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src =
+                            "https://placehold.co/800x1066/0a0a0a/C4A265?text=GOWS+Perfumerie";
+                        }}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -143,7 +151,9 @@ const SearchModal = ({ isOpen, onClose }) => {
                       >
                         {product.nombre}
                       </p>
-                      <p className="text-xs text-gray-400 capitalize">{product.categoria}</p>
+                      <p className="text-xs text-gray-400 capitalize">
+                        {product.categoria}
+                      </p>
                     </div>
                     <p className="text-sm font-medium text-gray-900 shrink-0">
                       USD ${product.precio}

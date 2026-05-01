@@ -9,7 +9,8 @@ const perfumes = [
     marca: "Le Labo",
     precio: 210,
     categoria: "niche",
-    descripcion: "Un ícono contemporáneo que redefine la esencia del sándalo. Notas de cardamomo, iris, violeta, cedro australiano y sándalo cremoso. La fragancia más icónica de la última década.",
+    descripcion:
+      "Un ícono contemporáneo que redefine la esencia del sándalo. Notas de cardamomo, iris, violeta, cedro australiano y sándalo cremoso. La fragancia más icónica de la última década.",
     notas: "Cardamomo · Iris · Violeta · Cedro · Sándalo",
     intensidad: "Eau de Parfum",
     stock: 8,
@@ -27,7 +28,8 @@ const perfumes = [
     marca: "Maison Francis Kurkdjian",
     precio: 325,
     categoria: "niche",
-    descripcion: "La fragancia más deseada del mundo. Azafrán luminoso, jazmín y amberwood se fusionan en una estela que permanece horas. Una obra maestra de la perfumería francesa.",
+    descripcion:
+      "La fragancia más deseada del mundo. Azafrán luminoso, jazmín y amberwood se fusionan en una estela que permanece horas. Una obra maestra de la perfumería francesa.",
     notas: "Azafrán · Jazmín · Amberwood · Cedro · Almizcle",
     intensidad: "Eau de Parfum",
     stock: 4,
@@ -45,7 +47,8 @@ const perfumes = [
     marca: "Tom Ford",
     precio: 280,
     categoria: "niche",
-    descripcion: "Oud exótico, cedro chino, sándalo y vainilla en una composición que transporta a los mercados de Oriente. Oscuro, cálido y absolutamente único.",
+    descripcion:
+      "Oud exótico, cedro chino, sándalo y vainilla en una composición que transporta a los mercados de Oriente. Oscuro, cálido y absolutamente único.",
     notas: "Oud · Sándalo · Cedro chino · Pimienta · Vainilla",
     intensidad: "Eau de Parfum",
     stock: 6,
@@ -63,7 +66,8 @@ const perfumes = [
     marca: "Dior",
     precio: 160,
     categoria: "homme",
-    descripcion: "La expresión más concentrada e intensa del Sauvage. Notas de canela picante, sándalo y nuez de gálbano. Para el hombre que no pasa desapercibido.",
+    descripcion:
+      "La expresión más concentrada e intensa del Sauvage. Notas de canela picante, sándalo y nuez de gálbano. Para el hombre que no pasa desapercibido.",
     notas: "Pomelo · Nuez de gálbano · Canela · Sándalo",
     intensidad: "Parfum",
     stock: 15,
@@ -80,7 +84,8 @@ const perfumes = [
     marca: "Chanel",
     precio: 145,
     categoria: "homme",
-    descripcion: "Madera aromática fresca y elegante. Notas de limón siciliano, bergamota y menta se funden con cedro y sándalo. La fragancia del hombre moderno y sofisticado.",
+    descripcion:
+      "Madera aromática fresca y elegante. Notas de limón siciliano, bergamota y menta se funden con cedro y sándalo. La fragancia del hombre moderno y sofisticado.",
     notas: "Limón · Bergamota · Menta · Cedro · Sándalo",
     intensidad: "Eau de Parfum",
     stock: 20,
@@ -97,7 +102,8 @@ const perfumes = [
     marca: "Yves Saint Laurent",
     precio: 110,
     categoria: "homme",
-    descripcion: "Fresco, moderno y audaz. Manzana verde brillante, bergamota e iris sobre una base de cedro y almizcle. El perfume que define una generación.",
+    descripcion:
+      "Fresco, moderno y audaz. Manzana verde brillante, bergamota e iris sobre una base de cedro y almizcle. El perfume que define una generación.",
     notas: "Manzana · Bergamota · Iris · Salvia · Cedro",
     intensidad: "Eau de Parfum",
     stock: 18,
@@ -115,7 +121,8 @@ const perfumes = [
     marca: "Chanel",
     precio: 165,
     categoria: "femme",
-    descripcion: "Un ícono de la feminidad contemporánea. Apertura cítrica de naranja y mandarina seguida de un corazón floral de rosa y jazmín sobre base de pachulí y vetiver.",
+    descripcion:
+      "Un ícono de la feminidad contemporánea. Apertura cítrica de naranja y mandarina seguida de un corazón floral de rosa y jazmín sobre base de pachulí y vetiver.",
     notas: "Naranja · Rosa · Jazmín · Pachulí · Vetiver",
     intensidad: "Eau de Parfum",
     stock: 14,
@@ -133,7 +140,8 @@ const perfumes = [
     marca: "Dior",
     precio: 130,
     categoria: "femme",
-    descripcion: "Un ramo eterno de peonía, rosa damascena y almizcle blanco. Fresco, romántico y femenino. Un clásico renovado para la mujer de hoy.",
+    descripcion:
+      "Un ramo eterno de peonía, rosa damascena y almizcle blanco. Fresco, romántico y femenino. Un clásico renovado para la mujer de hoy.",
     notas: "Peonía · Rosa damascena · Almizcle blanco",
     intensidad: "Eau de Toilette",
     stock: 16,
@@ -150,7 +158,8 @@ const perfumes = [
     marca: "Lancôme",
     precio: 120,
     categoria: "femme",
-    descripcion: "La felicidad hecha fragancia. Iris de Florencia, pralinée y vainilla bourbon crean una gourmand floral adictiva y atemporal que conquista a primera aspiración.",
+    descripcion:
+      "La felicidad hecha fragancia. Iris de Florencia, pralinée y vainilla bourbon crean una gourmand floral adictiva y atemporal que conquista a primera aspiración.",
     notas: "Iris · Pralinée · Vainilla bourbon · Pachulí",
     intensidad: "Eau de Parfum",
     stock: 22,
@@ -169,7 +178,8 @@ const perfumes = [
     marca: "Calvin Klein",
     precio: 85,
     categoria: "unisex",
-    descripcion: "Una relectura dorada del ícono unisex más famoso. Limón brillante, mandarina, flor de azahar y madera de cedro. Para compartir, para los dos.",
+    descripcion:
+      "Una relectura dorada del ícono unisex más famoso. Limón brillante, mandarina, flor de azahar y madera de cedro. Para compartir, para los dos.",
     notas: "Limón · Mandarina · Azahar · Ámbar · Cedro",
     intensidad: "Eau de Toilette",
     stock: 30,
@@ -185,7 +195,8 @@ const perfumes = [
     marca: "Giorgio Armani",
     precio: 115,
     categoria: "unisex",
-    descripcion: "El mar en estado puro. Mineralidad de bergamota y limón con mineralidad acuática, vetiver y madera oscura. La frescura mediterránea en su máxima expresión.",
+    descripcion:
+      "El mar en estado puro. Mineralidad de bergamota y limón con mineralidad acuática, vetiver y madera oscura. La frescura mediterránea en su máxima expresión.",
     notas: "Bergamota · Mineralidad · Lavanda · Vetiver · Madera",
     intensidad: "Eau de Parfum",
     stock: 25,
@@ -203,7 +214,8 @@ const perfumes = [
     marca: "Yves Saint Laurent",
     precio: 140,
     categoria: "unisex",
-    descripcion: "La libertad hecha fragancia. Lavanda de Provenza, flor de naranjo y una base cálida de vainilla y almizcle. Para quienes no siguen las reglas.",
+    descripcion:
+      "La libertad hecha fragancia. Lavanda de Provenza, flor de naranjo y una base cálida de vainilla y almizcle. Para quienes no siguen las reglas.",
     notas: "Lavanda · Flor de naranjo · Vainilla · Almizcle",
     intensidad: "Eau de Parfum Intense",
     stock: 12,
